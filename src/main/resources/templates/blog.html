@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Blogg 3000</title>
+    <link rel="stylesheet" th:href="@{/blog.css}">
+    <script type="text/javascript" th:src="@{/blog.js}"></script>
+</head>
+<body>
+<div class="container">
+    <h1 class="title">Välkommen till bloggen!</h1>
+    <div th:each="blogpost : ${blogPostList}">
+        <h2 th:text="${blogpost.getTitle()}"></h2>
+        <p th:text="${blogpost.getMessage()}"></p>
+        <button th:data-id="${blogpost.getId()}" th:onclick="handleDelete(this.getAttribute('data-id'))">Delete</button>
+        <hr />
+    </div>
+    <a th:href="@{/blog/addblog}"><button>Add new BlogPost!</button></a>
+  </div>
+</body>
+</html>
